@@ -23,8 +23,10 @@
 
 R__LOAD_LIBRARY(libfun4all.so)
 
-int Fun4All_G4_CORE(
+int Fun4All_G4_CORE_EEMC(
     const int nEvents = 1,
+    const double mom = 5,
+    const char* part_type = "e-",
     const string &inputFile = "/sphenix/data/data02/review_2017-08-02/single_particle/spacal2d/fieldmap/G4Hits_sPHENIX_e-_eta0_8GeV-0002.root",
     const string &outputFile = "G4COREDetector.root",
     const string &embed_input_file = "https://www.phenix.bnl.gov/WWW/publish/phnxbld/sPHENIX/files/sPHENIX_G4Hits_sHijing_9-11fm_00000_00010.root",
@@ -118,7 +120,8 @@ int Fun4All_G4_CORE(
   
     //INPUTGENERATOR::SimpleEventGenerator[0]->add_particles("mu-",1); //Single muon
     //INPUTGENERATOR::SimpleEventGenerator[0]->add_particles("e-",1); //Single electron
-    INPUTGENERATOR::SimpleEventGenerator[0]->add_particles("pi-",1); //Single negative pion
+    //INPUTGENERATOR::SimpleEventGenerator[0]->add_particles("pi-",1); //Single negative pion
+    INPUTGENERATOR::SimpleEventGenerator[0]->add_particles(part_type,1);
 
     if (Input::HEPMC || Input::EMBED)
     {
@@ -142,7 +145,7 @@ int Fun4All_G4_CORE(
     //For EEMC Study
     INPUTGENERATOR::SimpleEventGenerator[0]->set_eta_range(-4.2, -1.0);
     INPUTGENERATOR::SimpleEventGenerator[0]->set_phi_range(-M_PI, M_PI);
-    INPUTGENERATOR::SimpleEventGenerator[0]->set_p_range(5.,5.);
+    INPUTGENERATOR::SimpleEventGenerator[0]->set_p_range(mom,mom);
   }
   // Upsilons
   // if you run more than one of these Input::UPSILON_NUMBER > 1
@@ -237,7 +240,7 @@ int Fun4All_G4_CORE(
   Enable::CEMC_CELL = Enable::CEMC && true;
   Enable::CEMC_TOWER = Enable::CEMC_CELL && true;
   Enable::CEMC_CLUSTER = Enable::CEMC_TOWER && true;
-  Enable::CEMC_EVAL = Enable::CEMC_CLUSTER && true;
+  Enable::CEMC_EVAL = Enable::CEMC_CLUSTER && false;
 
   //Enable::HCALIN = false;
   //Enable::HCALIN_ABSORBER = true;

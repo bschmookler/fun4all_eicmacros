@@ -31,6 +31,7 @@ namespace Enable
 namespace G4TRACKING
 {
   bool DISPLACED_VERTEX = false;
+  bool PROJECTION_EEMC = false;
   bool PROJECTION_CEMC = false;
   bool PROJECTION_FEMC = false;
   bool PROJECTION_FHCAL = false;
@@ -144,14 +145,23 @@ void Tracking_Reco()
   {
     kalman->add_state_name("FHCAL");
   }
+
   //-------------------------
   // CEMC
   //-------------------------
-
   if (Enable::CEMC && G4TRACKING::PROJECTION_CEMC)
   {
     kalman->add_state_name("CEMC");
   }
+
+  //-------------------------
+  // EEMC
+  //-------------------------
+  if (Enable::EEMC && G4TRACKING::PROJECTION_EEMC)
+  {
+    kalman->add_state_name("EEMC");
+  }
+
   se->registerSubsystem(kalman);
 
   return;

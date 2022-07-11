@@ -21,11 +21,11 @@ void makeMapping_EEMC()
   float eemc_rmax1 = 45.; // cm
   float eemc_rmin2 = 7.4; // cm- accomodate Mar 2020 EIC beam pipe
   float eemc_rmax2 = 45.; // cm
-  float eemc_dz    = 10.0; // cm
+  float eemc_dz    = 20.0; // cm
 
   /* Tower parameters */
   float crystal_width = 2.0; // cm
-  float crystal_length = 10.0; // cm
+  float crystal_length = 20.0; // cm
   float carbon_thickness = 0.009; // cm
   float airgap = 0.012; // cm
 
