@@ -1,0 +1,12 @@
+Executable = CORE_emcal.sh
+PeriodicHold = (NumJobStarts>=1 && JobStatus == 1) 
+Arguments = "$(Process)"
+Output = jobout/CORE_emcal.out.$(Process)
+Error =	 jobout/CORE_emcal.err.$(Process)
+Log = jobout/CORE_emcal.log.$(Process)
+Universe = vanilla 
+Priority = +0 
+Input = /dev/null 
+GetEnv = True 
+Notification = Never
+Queue 20

@@ -1,0 +1,12 @@
+Executable = CORE_tracking.sh
+PeriodicHold = (NumJobStarts>=1 && JobStatus == 1) 
+Arguments = "$(Process)"
+Output = jobout/CORE_tracking.out.$(Process)
+Error =	 jobout/CORE_tracking.err.$(Process)
+Log = jobout/CORE_tracking.log.$(Process)
+Universe = vanilla 
+Priority = +0 
+Input = /dev/null 
+GetEnv = True 
+Notification = Never
+Queue 10
