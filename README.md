@@ -39,6 +39,7 @@ Running single-particle simulation
 ----------------------------------
 To run a simulation for 100 events, do the following:
 ```
+cd detectors/CORE
 root -l -b -q 'Fun4All_G4_CORE.C(100)'
 ```
 
